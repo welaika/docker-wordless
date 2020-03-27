@@ -8,7 +8,8 @@ ENV NVM_DIR $BASE_DIR/nvm
 ENV NODE_VERSION 12.13.1
 
 # Install Node from upstream
-RUN curl -o- $NVM_INSTALLER_URL | bash \
+RUN mkdir -p /usr/local/nvm \
+    && curl -o - $NVM_INSTALLER_URL | bash \
     && . $NVM_DIR/nvm.sh \
     && nvm install $NODE_VERSION \
     && nvm alias default $NODE_VERSION \
