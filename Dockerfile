@@ -15,9 +15,10 @@ RUN mkdir -p /usr/local/nvm \
     && nvm alias default $NODE_VERSION \
     && nvm use default \
     && nvm --version
- 
+
 ENV PATH $NVM_DIR/versions/node/v$NODE_VERSION/bin:$PATH
 
-RUN curl -sS https://dl.yarnpkg.com/debian/pubkey.gpg | apt-key add - \
+RUN apt update && apt install -y gnupg \
+    && curl -sS https://dl.yarnpkg.com/debian/pubkey.gpg | apt-key add - \
     && echo "deb https://dl.yarnpkg.com/debian/ stable main" | tee /etc/apt/sources.list.d/yarn.list \
     && apt update && apt install -y --no-install-recommends yarn
