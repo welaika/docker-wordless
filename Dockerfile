@@ -2,8 +2,6 @@ FROM welaika/wordmove:php7
 
 LABEL maintainer 'Alessandro Fazzi <alessandro.fazzi@welaika.com>'
 
-ENV NVM_DIR="$HOME/.nvm"
-
 RUN curl -sL https://deb.nodesource.com/setup_12.x | bash - \
     && apt update && apt-get install -y nodejs git
 
